@@ -390,9 +390,9 @@ function toggleAdvanced() {
     const panel = document.getElementById('advancedPanel');
     if (panel.style.display === 'none' || !panel.style.display) {
         panel.style.display = 'block';
-        panel.style.animation = 'slideIn 0.3s ease-out';
+        panel.classList.add('show');
     } else {
-        panel.style.animation = 'slideOut 0.3s ease-out';
+        panel.classList.remove('show');
         setTimeout(() => {
             panel.style.display = 'none';
         }, 300);
