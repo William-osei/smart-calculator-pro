@@ -48,6 +48,8 @@ An advanced web-based scientific calculator with smart features, built with vani
 
 ## 🚀 Live Demo
 
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-4CAF50?style=for-the-badge)](https://william-osei.github.io/smart-calculator-pro)
+
 **[Try the Calculator Live](https://william-osei.github.io/smart-calculator-pro)**
 
 ## 📦 Installation
