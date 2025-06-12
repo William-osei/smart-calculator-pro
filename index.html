@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Calculator Pro - William Osei Aborah</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="description" content="Advanced scientific calculator with memory functions, unit conversions, and formula library.">
+</head>
+<body>
+    <div class="container">
+        <h1>🧮 Smart Calculator Pro</h1>
+        <p class="subtitle">Advanced Scientific Calculator with Smart Features</p>
+        
+        <div class="calculator-demo">
+            <div class="calc-header">Smart Calculator Pro</div>
+            <div class="calc-display" id="display">
+                <div class="calc-history" id="history"></div>
+                <div class="calc-current" id="current">0</div>
+            </div>
+            
+            <!-- Mode Toggle -->
+            <div class="mode-controls">
+                <button class="calc-btn mode-btn" onclick="toggleMode()" id="modeBtn">Scientific Mode</button>
+                <button class="calc-btn angle-btn" onclick="toggleDegRad()" id="angleBtn">DEG</button>
+            </div>
+            
+            <div class="calc-buttons" id="calcButtons">
+                <!-- Basic Mode Buttons -->
+                <button class="calc-btn" onclick="clearAll()">AC</button>
+                <button class="calc-btn" onclick="clearEntry()">C</button>
+                <button class="calc-btn" onclick="backspace()">⌫</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('/')">÷</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
+                <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
+                <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('sqrt')" style="display: none;">√</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
+                <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
+                <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('square')" style="display: none;">x²</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
+                <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
+                <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
+                <button class="calc-btn" onclick="appendToDisplay('.')">∙</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('power')" style="display: none;">x^y</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('0')">0</button>
+                <button class="calc-btn" onclick="appendToDisplay('(')">(</button>
+                <button class="calc-btn" onclick="appendToDisplay(')')">) </button>
+                <button class="calc-btn equals" onclick="calculate()">=</button>
+                <button class="calc-btn scientific" onclick="appendConstant('pi')" style="display: none;">π</button>
+                
+                <!-- Scientific Functions -->
+                <button class="calc-btn scientific" onclick="calculateFunction('sin')" style="display: none;">sin</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('cos')" style="display: none;">cos</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('tan')" style="display: none;">tan</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('log')" style="display: none;">log</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('ln')" style="display: none;">ln</button>
+                
+                <button class="calc-btn scientific" onclick="calculateFunction('asin')" style="display: none;">sin⁻¹</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('acos')" style="display: none;">cos⁻¹</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('atan')" style="display: none;">tan⁻¹</button>
+                <button class="calc-btn scientific" onclick="appendConstant('e')" style="display: none;">e</button>
+                <button class="calc-btn scientific" onclick="calculateFunction('factorial')" style="display: none;">n!</button>
+            </div>
+            
+            <!-- Memory and History Controls -->
+            <div class="memory-controls">
+                <button class="calc-btn memory-btn" onclick="memoryStore()">MS</button>
+                <button class="calc-btn memory-btn" onclick="memoryRecall()">MR</button>
+                <button class="calc-btn memory-btn" onclick="memoryClear()">MC</button>
+                <button class="calc-btn history-btn" onclick="showHistory()">History</button>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h2>🌟 Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🔬 Scientific Functions</h3>
+                    <p>Trigonometric, logarithmic, and exponential functions</p>
+                </div>
+                <div class="feature-item">
+                    <h3>💾 Memory Operations</h3>
+                    <p>Store, recall, and manage calculation results</p>
+                </div>
+                <div class="feature-item">
+                    <h3>⌨️ Keyboard Support</h3>
+                    <p>Full keyboard shortcuts for faster calculations</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📱 Responsive Design</h3>
+                    <p>Works perfectly on desktop, tablet, and mobile</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 William Osei Aborah. Built with ❤️ for better calculations.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
