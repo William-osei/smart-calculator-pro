@@ -385,12 +385,134 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Advanced Features Functions
+function toggleAdvanced() {
+    const panel = document.getElementById('advancedPanel');
+    if (panel.style.display === 'none' || !panel.style.display) {
+        panel.style.display = 'block';
+        panel.style.animation = 'slideIn 0.3s ease-out';
+    } else {
+        panel.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => {
+            panel.style.display = 'none';
+        }, 300);
+    }
+}
+
+// Unit Converter Functions
+function convertUnits() {
+    const value = parseFloat(document.getElementById('convertInput').value);
+    const fromUnit = document.getElementById('fromUnit').value;
+    const toUnit = document.getElementById('toUnit').value;
+    const resultDiv = document.getElementById('convertResult');
+    
+    if (isNaN(value)) {
+        resultDiv.innerHTML = '<span style="color: #e74c3c;">Please enter a valid number</span>';
+        return;
+    }
+    
+    // Conversion factors to meters
+    const toMeters = {
+        'm': 1,
+        'ft': 0.3048,
+        'in': 0.0254,
+        'cm': 0.01
+    };
+    
+    // Convert to meters first, then to target unit
+    const meters = value * toMeters[fromUnit];
+    const result = meters / toMeters[toUnit];
+    
+    resultDiv.innerHTML = `
+        <div class="conversion-result">
+            <strong>${value} ${fromUnit} = ${result.toFixed(4)} ${toUnit}</strong>
+        </div>
+    `;
+}
+
+// Statistics Calculator Functions
+function calculateStats() {
+    const input = document.getElementById('dataInput').value;
+    const resultDiv = document.getElementById('statsResult');
+    
+    if (!input.trim()) {
+        resultDiv.innerHTML = '<span style="color: #e74c3c;">Please enter some numbers</span>';
+        return;
+    }
+    
+    try {
+        const numbers = input.split(',').map(n => parseFloat(n.trim())).filter(n => !isNaN(n));
+        
+        if (numbers.length === 0) {
+            resultDiv.innerHTML = '<span style="color: #e74c3c;">No valid numbers found</span>';
+            return;
+        }
+        
+        const n = numbers.length;
+        const sum = numbers.reduce((a, b) => a + b, 0);
+        const mean = sum / n;
+        const sortedNumbers = [...numbers].sort((a, b) => a - b);
+        const median = n % 2 === 0 
+            ? (sortedNumbers[n/2 - 1] + sortedNumbers[n/2]) / 2
+            : sortedNumbers[Math.floor(n/2)];
+        
+        const variance = numbers.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / n;
+        const stdDev = Math.sqrt(variance);
+        const min = Math.min(...numbers);
+        const max = Math.max(...numbers);
+        
+        resultDiv.innerHTML = `
+            <div class="stats-results">
+                <h4>📊 Statistical Analysis</h4>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <label>Count:</label>
+                        <span>${n}</span>
+                    </div>
+                    <div class="stat-item">
+                        <label>Sum:</label>
+                        <span>${sum.toFixed(2)}</span>
+                    </div>
+                    <div class="stat-item">
+                        <label>Mean:</label>
+                        <span>${mean.toFixed(4)}</span>
+                    </div>
+                    <div class="stat-item">
+                        <label>Median:</label>
+                        <span>${median.toFixed(4)}</span>
+                    </div>
+                    <div class="stat-item">
+                        <label>Std Dev:</label>
+                        <span>${stdDev.toFixed(4)}</span>
+                    </div>
+                    <div class="stat-item">
+                        <label>Min:</label>
+                        <span>${min}</span>
+                    </div>
+                    <div class="stat-item">
+                        <label>Max:</label>
+                        <span>${max}</span>
+                    </div>
+                    <div class="stat-item">
+                        <label>Range:</label>
+                        <span>${(max - min).toFixed(4)}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    } catch (error) {
+        resultDiv.innerHTML = '<span style="color: #e74c3c;">Error processing data</span>';
+    }
+}
+
 // Export functions for testing
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         calculate,
         factorial,
-        calculateFunction
+        calculateFunction,
+        convertUnits,
+        calculateStats
     };
 }
 

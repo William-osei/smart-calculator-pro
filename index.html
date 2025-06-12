@@ -82,6 +82,52 @@
             </div>
         </div>
         
+        <!-- Advanced Features Panel -->
+        <div class="advanced-panel" id="advancedPanel" style="display: none;">
+            <div class="panel-header">
+                <h3>⚡ Advanced Tools</h3>
+                <button class="close-btn" onclick="toggleAdvanced()">×</button>
+            </div>
+            <div class="panel-content">
+                <div class="tool-section">
+                    <h4>📐 Unit Converter</h4>
+                    <div class="converter">
+                        <input type="number" id="convertInput" placeholder="Enter value">
+                        <select id="fromUnit">
+                            <option value="m">Meters</option>
+                            <option value="ft">Feet</option>
+                            <option value="in">Inches</option>
+                            <option value="cm">Centimeters</option>
+                        </select>
+                        <span>to</span>
+                        <select id="toUnit">
+                            <option value="ft">Feet</option>
+                            <option value="m">Meters</option>
+                            <option value="in">Inches</option>
+                            <option value="cm">Centimeters</option>
+                        </select>
+                        <button onclick="convertUnits()">Convert</button>
+                        <div id="convertResult"></div>
+                    </div>
+                </div>
+                <div class="tool-section">
+                    <h4>📊 Statistics Calculator</h4>
+                    <div class="stats-calc">
+                        <textarea id="dataInput" placeholder="Enter numbers separated by commas (e.g., 1,2,3,4,5)"></textarea>
+                        <button onclick="calculateStats()">Calculate Stats</button>
+                        <div id="statsResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Advanced Tools Button -->
+        <div class="advanced-btn-container">
+            <button class="advanced-btn" onclick="toggleAdvanced()">
+                <i class="icon">⚡</i> Advanced Tools
+            </button>
+        </div>
+        
         <div class="features">
             <h2>🌟 Features</h2>
             <div class="feature-grid">
